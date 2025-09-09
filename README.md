@@ -64,7 +64,7 @@ HTTP 기초
 - 연결 재사용(keep-alive)과 HTTP/2 멀티플렉싱
 - 연결 비용과 지연 시간에 대한 고려
 
-#### [03-5 HTTP 메시지]()
+#### [03-5 HTTP 메시지](chapters/03-5-HTTP-메시지.md)
 - 시작줄, 헤더, 바디 구조
 - 요청 라인(method, URI, version)과 상태라인(status code)
 - 헤더 예시와 바디 포맷(JSON, HTML, Form)

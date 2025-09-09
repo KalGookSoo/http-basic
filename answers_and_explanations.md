@@ -65,7 +65,7 @@
 - 연결 재사용(keep-alive)과 HTTP/2 멀티플렉싱
 - 연결 비용과 지연 시간에 대한 고려
 
-#### [03-5 HTTP 메시지]()
+#### [03-5 HTTP 메시지](#ans-03-5-http-메시지)
 - 시작줄, 헤더, 바디 구조
 - 요청 라인(method, URI, version)과 상태라인(status code)
 - 헤더 예시와 바디 포맷(JSON, HTML, Form)
@@ -555,3 +555,36 @@
 - 연결 재사용은 새로운 TLS 핸드셰이크를 피하고 TCP 슬로우 스타트 재시작도 줄여 성능에 이롭습니다.
 - 도메인 샤딩은 HTTP/2 시대에는 일반적으로 비권장입니다(단일 연결 멀티플렉싱이 유리).
 - 비 연결성은 서버에 세션을 메모리에 저장한다는 뜻이 아닙니다. 이는 상태 관리 전략과 별개입니다.
+
+
+<a id="ans-03-5-http-메시지"></a>
+## 03-5 HTTP 메시지 정답 및 해설
+
+### 문제 1
+문제: HTTP 메시지 구조에 대한 설명으로 옳은 것은?
+
+정답: 시작줄 다음에는 헤더들이 오고, 빈 줄 이후에 바디가 온다
+
+해설:
+- HTTP 메시지는 시작줄 → 헤더들 → 빈 줄(CRLF 2회) → 바디 순서로 구성됩니다.
+- 요청/응답 모두 헤더 없이 바디만 존재하지 않으며, 헤더 종료는 CRLF 2회로 표시합니다. 요청의 시작줄은 메서드로 시작하고, 응답은 상태코드가 아닌 프로토콜 버전으로 시작합니다.
+
+### 문제 2
+문제: 다음 중 요청 라인과 상태 라인에 대한 설명이 옳은 것은?
+
+정답: 요청 라인의 request-target은 보통 origin-form이며 경로와 쿼리를 포함할 수 있다
+
+해설:
+- 요청 라인은 Method SP Request-Target SP HTTP-Version 구조이며, 일반 브라우저 요청은 origin-form("/path?query")을 사용합니다.
+- 상태 라인은 HTTP-Version SP Status-Code SP Reason-Phrase 구조입니다. Reason-Phrase는 선택적이며 의미 해석에 의존하지 않는 것이 원칙입니다.
+- 제시된 오답의 순서는 서로 뒤바뀌었거나 요소가 잘못되었습니다.
+
+### 문제 3 (복수 응답)
+문제: 다음 중 메시지 바디 전송과 관련하여 옳은 것을 모두 고르시오.
+
+정답: Content-Length는 바디의 바이트 길이를 나타낸다, Transfer-Encoding: chunked는 바디 길이를 모를 때 청크로 전송할 수 있게 한다, application/x-www-form-urlencoded는 키-값 쌍을 `&`로 연결해 전송한다, multipart/form-data는 파일 업로드에 자주 사용된다
+
+해설:
+- Content-Length는 바디 크기를 명시합니다.
+- chunked 인코딩은 길이를 미리 모를 때 유용하며 각 청크는 16진 길이로 시작합니다. HTTP/2 이상에서는 전송 프레이밍으로 대체되므로 Transfer-Encoding 헤더를 사용하지 않습니다.
+- application/x-www-form-urlencoded는 키-값을 `&`로 연결합니다. multipart/form-data는 파일 업로드 등 복합 데이터에 적합합니다.

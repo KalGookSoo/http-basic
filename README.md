@@ -59,7 +59,7 @@ HTTP 기초
 - 세션/쿠키/토큰을 통한 상태 관리 전략
 - 확장성, 장애 복구, 캐시 적합성 관점 비교
 
-#### [03-4 비 연결성(connectionless)]()
+#### [03-4 비 연결성(connectionless)](chapters/03-4-비-연결성-connectionless.md)
 - 요청-응답 후 연결을 종료하는 특성
 - 연결 재사용(keep-alive)과 HTTP/2 멀티플렉싱
 - 연결 비용과 지연 시간에 대한 고려

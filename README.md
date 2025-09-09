@@ -81,7 +81,7 @@ HTTP 기초
 - POST: 리소스 생성/행위 트리거, 바디 전송
 - 사용 시나리오와 캐시/브라우저 동작 차이
 
-#### [04-3 HTTP 메서드 - PUT, PATCH, DELETE]()
+#### [04-3 HTTP 메서드 - PUT, PATCH, DELETE](chapters/04-3-HTTP-메서드-PUT-PATCH-DELETE.md)
 - PUT: 전체 교체, 멱등적 특성
 - PATCH: 부분 변경, 멱등성 보장 아님
 - DELETE: 삭제, 멱등적 동작 기대

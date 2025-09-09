@@ -148,10 +148,44 @@
 - GET은 ETag/Last-Modified/Cache-Control이 있으면 캐시가 활용됩니다.
 - POST는 기본적으로 캐시 대상이 아니며, 멱등이 아니므로 서버 측에서 중복 방지 키로 같은 요청의 중복 처리를 차단할 수 있습니다. 민감 정보는 GET 쿼리에 넣지 않는 것이 안전합니다.
 
-#### [04-3 HTTP 메서드 - PUT, PATCH, DELETE]()
+#### [04-3 HTTP 메서드 - PUT, PATCH, DELETE](#ans-04-3-http-메서드-put-patch-delete)
 - PUT: 전체 교체, 멱등적 특성
 - PATCH: 부분 변경, 멱등성 보장 아님
 - DELETE: 삭제, 멱등적 동작 기대
+
+<a id="ans-04-3-http-메서드-put-patch-delete"></a>
+## 04-3 HTTP 메서드 - PUT, PATCH, DELETE 정답 및 해설
+
+### 문제 1
+문제: 다음 중 PUT에 대한 설명으로 가장 옳은 것은?
+
+정답: 리소스 전체를 주어진 표현으로 교체하며 멱등적 동작이 기대된다
+
+해설:
+- PUT은 동일 요청을 반복해도 최종 리소스 상태가 같아야 하는 멱등 메서드입니다.
+- 전체 교체를 의미하는 것이 일반적이며, 존재하지 않을 때 생성 허용 여부는 정책에 따릅니다(허용 시 201 + Location 가능).
+- 안전(safe)한 메서드는 아니며 서버 상태를 변경할 수 있습니다.
+
+### 문제 2
+문제: 다음 중 PATCH에 대한 설명으로 옳은 것은?
+
+정답: PATCH는 부분 변경에 적합하며 멱등이 아닐 수 있다
+
+해설:
+- PATCH는 리소스의 일부 필드만 변경할 때 사용합니다.
+- Merge Patch(application-merge-patch+json)는 필드 병합/삭제 규칙을 사용하고, JSON Patch(application-json-patch+json)는 연산 목록으로 변경을 명시합니다.
+- 멱등성은 문서의 의미에 따라 달라질 수 있으므로 일반적으로 보장하지 않습니다.
+
+### 문제 3 (복수 응답)
+문제: 다음 중 옳은 것을 모두 고르시오.
+
+정답: DELETE는 멱등적 동작이 기대된다, If-Match와 ETag를 사용하면 경쟁 상황에서 갱신 충돌을 방지할 수 있다, PATCH는 application-json-patch+json 같은 미디어 타입을 사용할 수 있다
+
+해설:
+- DELETE는 이미 삭제된 리소스에 대해 다시 호출해도 최종 상태가 동일하므로 멱등 동작이 기대됩니다(응답 코드는 정책에 따라 204/404 등 가능).
+- 조건부 갱신은 ETag/If-Match로 구현하며, 불일치 시 412로 충돌을 방지합니다.
+- JSON Patch는 application-json-patch+json 미디어 타입을 사용합니다. Merge Patch는 application-merge-patch+json을 사용합니다.
+- PUT은 존재하지 않을 때 항상 404만 반환해야 하는 것은 아닙니다(업서트 정책이 허용되면 201 가능). 204 No Content에는 바디를 포함하지 않습니다.
 
 #### [04-4 HTTP 메서드의 속성]()
 - 안전성(Safe), 멱등성(Idempotent), 캐시가능성(Cacheable)

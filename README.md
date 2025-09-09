@@ -20,7 +20,7 @@ HTTP 기초
 - UDP의 비연결성, 경량성, 실시간성 장점
 - 용도 비교: 파일전송/웹(TCP) vs 스트리밍/게임(UDP)
 
-#### [01-4 PORT]()
+#### [01-4 PORT](chapters/01-4-PORT.md)
 - 포트의 역할과 범위(Well-known/Registered/Dynamic)
 - 소켓(아이피+포트) 개념과 프로세스 매핑
 - 서비스 구분을 위한 포트 사용 예시(HTTP 80, HTTPS 443)

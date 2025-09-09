@@ -76,7 +76,7 @@ HTTP 기초
 - 표준 메서드 활용해 CRUD 매핑하기
 - 엔드포인트 버저닝과 문서화 기본
 
-#### [04-2 HTTP 메서드 - GET, POST]()
+#### [04-2 HTTP 메서드 - GET, POST](chapters/04-2-HTTP-메서드-GET-POST.md)
 - GET: 안전(safe), 캐시 가능, 멱등성(idempotent) X
 - POST: 리소스 생성/행위 트리거, 바디 전송
 - 사용 시나리오와 캐시/브라우저 동작 차이

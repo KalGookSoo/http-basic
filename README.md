@@ -54,7 +54,7 @@ HTTP 기초
 - 무상태 통신에서의 확장성과 부하 분산
 - 프록시, 게이트웨이, 로드밸런서의 위치
 
-#### [03-3 Stateful, Stateless]()
+#### [03-3 Stateful, Stateless](chapters/03-3-Stateful-Stateless.md)
 - 상태 유지 vs 비상태의 차이와 장단점
 - 세션/쿠키/토큰을 통한 상태 관리 전략
 - 확장성, 장애 복구, 캐시 적합성 관점 비교

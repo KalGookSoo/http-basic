@@ -93,7 +93,7 @@ HTTP 기초
 
 ### Chapter 05 HTTP 메서드 활용
 
-#### [05-1 클라이언트에서 서버로 데이터 전송]()
+#### [05-1 클라이언트에서 서버로 데이터 전송](chapters/05-1-클라이언트에서-서버로-데이터-전송.md)
 - 쿼리 파라미터 vs 메시지 바디의 용도 차이
 - 폼 전송(application/x-www-form-urlencoded, multipart)
 - JSON 전송과 콘텐츠 타입 지정
